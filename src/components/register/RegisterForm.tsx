@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { register } from '../../api/modules/auth';
 
 export const RegisterForm = () => {
-
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const registerUser = () => {
+        register({ username, password }).then((response) => {
+            console.log(response);
+        })
+    }
     return (
         <>
             <span className="page-title">register a new account</span>
-            <form action="">
-                <input type="text" name="u" id="username" />
-                <input type="password" name="password" id="password" autoComplete="new-password" />
-                <button type="button">register</button>
-            </form>
+            <div>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+                <button onClick={registerUser}>register</button>
+            </div>
         </>
     )
 }
