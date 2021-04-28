@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const RegisterForm = () => {
+
     return (
         <>
             <span className="page-title">register a new account</span>
