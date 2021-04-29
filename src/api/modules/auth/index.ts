@@ -22,3 +22,10 @@ export const register = async ({ username, password }: UserDetails): Promise<Axi
     });
     return response;
 }
+
+export const login = async ({ username, password }: UserDetails): Promise<AxiosResponse<UserToken>> => {
+    const response = await authAPI.post(process.env.REACT_APP_AUTH_LOGIN!, { username, password }).catch(error => {
+        return error.message;
+    });
+    return response;
+}

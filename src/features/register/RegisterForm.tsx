@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser, setToken } from '../../app/slices/userSlice'
 import { register } from '../../api/modules/auth';
+import { Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
     const [username, setUsername] = useState('');
@@ -39,6 +40,8 @@ export const RegisterForm = () => {
                 />
                 <button onClick={registerUser}>register</button>
             </div>
+            <Link to="/">login to existing account</Link>
+
         </>
     )
 }

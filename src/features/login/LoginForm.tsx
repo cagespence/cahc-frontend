@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser, setToken } from '../../app/slices/userSlice'
-import { register } from '../../api/modules/auth';
+import { login } from '../../api/modules/auth';
+import { Link } from 'react-router-dom';
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const registerUser = () => {
-        register({ username, password }).then(({ data: { username, token } }) => {
+    const loginUser = () => {
+        login({ username, password }).then(({ data: { username, token } }) => {
             if (token) {
                 dispatch(setUser(username));
                 dispatch(setToken(token));
@@ -20,7 +21,7 @@ export const RegisterForm = () => {
     }
     return (
         <>
-            <span className="page-title">register a new account</span>
+            <span className="page-title">log in</span>
             <div>
                 <input
                     type="text"
@@ -37,8 +38,9 @@ export const RegisterForm = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <button onClick={registerUser}>register</button>
+                <button onClick={loginUser}>log in</button>
             </div>
+            <Link to="/register">register an account</Link>
         </>
     )
 }
