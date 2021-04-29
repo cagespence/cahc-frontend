@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setUser, setToken } from '../../app/slices/userSlice'
 import { register } from '../../api/modules/auth';
 
 export const RegisterForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
     const registerUser = () => {
-        register({ username, password }).then((response) => {
-            if (response.data.token) {
-                // save token
+        register({ username, password }).then(({ data: { username, token } }) => {
+            if (token) {
+                dispatch(setUser(username));
+                dispatch(setToken(token));
             }
-            console.log(response);
         }).catch(error => {
             console.log(error.status);
             console.log(error.message)
