@@ -17,18 +17,18 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            state.username = action.payload;
+            return { ...state, username: action.payload };
         },
         removeUser: (state, action) => {
-            state.username = '';
+            return { ...state, username: "" }
         },
         setToken: (state, action) => {
-            state.token = action.payload;
             localStorage.setItem(TOKEN_KEY, action.payload);
+            return { ...state, token: action.payload };
         },
         removeToken: (state, action) => {
-            state.token = '';
             localStorage.removeItem(TOKEN_KEY);
+            return { ...state, token: '' };
         }
     }
 })

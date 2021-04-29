@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setUser, setToken } from '../../app/slices/userSlice'
 import { login } from '../../api/modules/auth';
-import { Link } from 'react-router-dom';
 
 export const LoginForm = () => {
     const [username, setUsername] = useState('');
