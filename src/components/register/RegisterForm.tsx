@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../../api/modules/auth';
 
 export const RegisterForm = () => {
