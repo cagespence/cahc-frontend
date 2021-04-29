@@ -6,7 +6,13 @@ export const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const registerUser = () => {
         register({ username, password }).then((response) => {
+            if (response.data.token) {
+                // save token
+            }
             console.log(response);
+        }).catch(error => {
+            console.log(error.status);
+            console.log(error.message)
         })
     }
     return (
