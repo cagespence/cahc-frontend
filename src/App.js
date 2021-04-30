@@ -53,7 +53,6 @@ function App() {
 
 function PrivateRoute({ children, ...rest }) {
   let user = useSelector(selectUser);
-  console.log(user)
   return (
     <Route
       {...rest}
