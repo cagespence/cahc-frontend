@@ -11,7 +11,7 @@ const initialState: RoomState = {
 }
 
 export const roomSlice = createSlice({
-    name: 'user',
+    name: 'room',
     initialState,
     reducers: {
         setInRoom: (state, action) => {
