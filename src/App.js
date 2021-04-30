@@ -4,6 +4,7 @@ import './assets/css/main.scss';
 import { RegisterForm } from './features/register/RegisterForm';
 import { LoginForm } from './features/login/LoginForm';
 import { HostForm } from './features/host/HostForm';
+import { JoinForm } from './features/join/JoinForm';
 import { selectUser } from './app/slices/userSlice'
 import { useSelector } from 'react-redux';
 
@@ -44,6 +45,7 @@ function App() {
           </UnauthenticatedRoute>
           <PrivateRoute exact path="/host">
             <HostForm />
+            <JoinForm />
           </PrivateRoute>
         </Switch>
       </Router>
