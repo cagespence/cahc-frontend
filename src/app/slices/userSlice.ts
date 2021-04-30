@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, Slice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const TOKEN_KEY = 'token'
 
