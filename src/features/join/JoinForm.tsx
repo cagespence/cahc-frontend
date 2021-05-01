@@ -27,22 +27,34 @@ export const JoinForm = () => {
         }
     }
 
+    const FormIfNotJoined = () => {
+        if (!inRoom) {
+            return (
+                <>
+                    <div>
+                        Join a room
+                    </div>
+                    <input
+                        value={roomCode}
+                        onChange={handleSetRoomCode}
+                        type="text"
+                        name="roomCode"
+                        id="roomCode"
+                    />
+                    <button onClick={handleJoinRoom}>join</button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div>In room: {`${inRoom}`}</div>
+                    <button>leave room</button>
+                </>
+            )
+        }
+    }
+
     return (
-        <>
-            <div>
-                Join a room
-            </div>
-            <div>
-                {`${inRoom}`} - {`${isHost}`}
-            </div>
-            <input
-                value={roomCode}
-                onChange={handleSetRoomCode}
-                type="text"
-                name="roomCode"
-                id="roomCode"
-            />
-            <button onClick={handleJoinRoom}>join</button>
-        </>
+        <FormIfNotJoined />
     )
 }
