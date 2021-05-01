@@ -17,15 +17,25 @@ export const HostForm = () => {
         }
     }
 
+    const FormIfNotJoined = () => {
+        if (!inRoom) {
+            return (
+                <>
+                    <div>
+                        Host a room
+                    </div>
+                    <button onClick={handleCreateRoom}>host</button>
+                </>
+            )
+        } else return (
+            <>
+                <div>{`hosting room: ${inRoom}`}</div>
+                <button>close room</button>
+            </>
+        )
+    }
+
     return (
-        <>
-            <div>
-                Host a room
-            </div>
-            <div>
-                {`${inRoom}`} - {`${isHost}`}
-            </div>
-            <button onClick={handleCreateRoom}>host</button>
-        </>
+        <FormIfNotJoined />
     )
 }
