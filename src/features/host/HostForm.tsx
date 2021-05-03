@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { createRoom, connect } from '../../socketio/socket';
 import { selectInRoom, selectIsHost } from '../../app/slices/roomSlice';
 import { selectIsConnected } from '../../app/slices/socketSlice';
+import { Link } from 'react-router-dom';
 export const HostForm = () => {
     const username = useSelector(selectUser);
     const inRoom = useSelector(selectInRoom);
@@ -17,25 +18,15 @@ export const HostForm = () => {
         }
     }
 
-    const FormIfNotJoined = () => {
-        if (!inRoom) {
-            return (
-                <>
-                    <div>
-                        Host a room
-                    </div>
-                    <button onClick={handleCreateRoom}>host</button>
-                </>
-            )
-        } else return (
-            <>
-                <div>{`hosting room: ${inRoom}`}</div>
-                <button>close room</button>
-            </>
-        )
-    }
-
     return (
-        <FormIfNotJoined />
+        <>
+            <div>
+                Host a room
+                        </div>
+            <button onClick={handleCreateRoom}>host</button>
+            <div>
+                <Link to="/game/join">join a room instead</Link>
+            </div>
+        </>
     )
 }
