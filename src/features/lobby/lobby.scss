@@ -1,0 +1,10 @@
+.lobby {
+    &--room-code {
+        background-color: rgb(60, 100, 175);
+        font-weight: bold;
+        color: white;
+    }
+    &--room-players {
+        text-decoration: underline solid black;
+    }
+}
