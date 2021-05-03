@@ -28,7 +28,7 @@ export const roomSlice = createSlice({
     }
 })
 
-export const { setInRoom, setIsHost } = roomSlice.actions;
+export const { setInRoom, setIsHost, setMembers } = roomSlice.actions;
 
 export const selectInRoom = (state: any) => state.room.inRoom;
 export const selectIsHost = (state: any) => state.room.isHost;
