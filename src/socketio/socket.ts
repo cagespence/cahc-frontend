@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 import { store } from '../app/store'
-import { setInRoom, setIsHost } from '../app/slices/roomSlice';
+import { setInRoom, setIsHost, setMembers } from '../app/slices/roomSlice';
 import { setIsConnected } from '../app/slices/socketSlice';
 
 const URL = "localhost:5000";
@@ -30,6 +30,11 @@ socket.on('create-room-success', (id) => {
 socket.on('join-room-success', (id) => {
     console.log(`room ${id} joined successfully`)
     store.dispatch(setInRoom(id));
+})
+
+socket.on('room-members', (members) => {
+    console.log('members', members)
+    store.dispatch(setMembers(members));
 })
 
 export const connect = (username: string, callback: (args?: any) => any, args?: any) => {
